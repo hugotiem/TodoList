@@ -8,11 +8,11 @@
       <div>
         <label for="email">Email :</label>
         <br>
-        <input type="email" name="email" v-model="loginId.email">
+        <input type="email" name="email" v-on:keyup="test($event, 'login')" v-model="loginId.email">
         <br>
         <label for="password">Mot de passe : </label> 
         <br>
-        <input type="password" name="password" v-model="loginId.password">
+        <input type="password" name="password" v-on:keyup="test($event, 'login')" v-model="loginId.password">
       </div>
       <div class="btn login-btn rounded-lg bg-purple-50" @click="toLogin">
         <label>Se connecter</label>
@@ -27,15 +27,15 @@
       <div>
         <label for="name">Nom :</label>
         <br>
-        <input type="text" name="name" v-model="signUp.name">
+        <input type="text" name="name" v-on:keyup="test($event, 'signUp')" v-model="signUp.name">
         <br>
         <label for="email">Email :</label>
         <br>
-        <input type="email" name="email" v-model="signUp.email">
+        <input type="email" name="email" v-on:keyup="test($event, 'signUp')" v-model="signUp.email">
         <br>
         <label for="password">Mot de passe : </label> 
         <br>
-        <input type="password" name="password" v-model="signUp.password">
+        <input type="password" name="password" v-on:keyup="test($event, 'signUp')" v-model="signUp.password">
       </div>
       <div class="btn login-btn rounded-lg  bg-purple-50" @click="toRegister">
         <label>S'inscrire</label>
@@ -81,12 +81,27 @@ export default {
       if(this.loginId.email != '' && this.loginId.password != ''){
         const msg = await this.login(this.loginId);
         this.logError = msg;        
+      } else {
+        this.logError = "Tous les champs doivent être rempli.";
       }
     },
     async toRegister() {
       if(this.signUp.name != '' && this.signUp.email != '' && this.signUp.password != ''){
         const msg = await this.register(this.signUp);
         this.regError = msg;
+      } else {
+        this.regError = "Tous les champs doivent être rempli.";
+      }
+    },
+
+    test: async function(event, value) {
+      if(event.key == 'Enter'){
+        if(value == 'login'){
+          await this.toLogin();
+        } else {
+          await this.toRegister();
+        }
+        
       }
     }
   },

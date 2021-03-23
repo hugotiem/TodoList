@@ -11,7 +11,7 @@
     </div>
     </li>
     <li>
-      <input class="w-3/4" type="text" v-model="this.name">
+      <input class="w-3/4" type="text" v-on:keyup="toAdd" v-model="this.name">
       <div @click="add" class="cursor-pointer">
         <label class="cursor-pointer">Ajouter</label>
       </div>
@@ -32,6 +32,12 @@ export default {
   },
 
   methods: {
+
+    toAdd: function (event) {
+      if(event.key == 'Enter'){
+        this.add();
+      }
+    },
 
     add: async function () {
       if(this.name != ''){

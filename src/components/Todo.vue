@@ -1,7 +1,7 @@
 <template >
   <input type="checkbox" v-model="completed" :name="todo.name" v-if="!isModifying"> 
   <label :for="todo.name" v-if="!isModifying">{{todo.name}}</label>
-  <input type="text" name="modify" v-model="newName" v-else class="newTodo">
+  <input type="text" name="modify" v-model="newName" v-on:keyup="eventHandler" v-else class="newTodo">
   <div v-if="!isModifying" class="btns">
     <div @click="toModify()" class="rounded-lg cursor-pointer p-2 text-opacity-30 opacity-30 hover:opacity-100">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="15">
@@ -60,6 +60,12 @@ export default {
   methods: {
     //recupere actions from store/todolist/actions.js
     ...mapActions("todolist", ['setCompleted', 'modifyTodo', 'deleteTodo']),
+
+    eventHandler: function (event) {
+      if(event.key == 'Enter'){
+        this.modify();
+      }
+    },
 
     toModify: function () {
       this.isModifying = !this.isModifying;
