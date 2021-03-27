@@ -1,4 +1,7 @@
 <template>
+  <!-- recherche todolist -->
+  <!-- affichage nb todos -->
+  
   <div>
     <router-view/>  
   </div>

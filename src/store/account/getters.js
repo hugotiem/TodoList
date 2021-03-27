@@ -5,3 +5,7 @@ export const getToken = (state) => {
 export const isLoggedIn = (state) => {
   return state.token != null;
 }
+
+export const getUser = (state) => {
+  return state.user;
+}

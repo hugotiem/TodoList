@@ -1,6 +1,6 @@
 <template>
   <div id="title" class="absolute text-white left-1/2 text-5xl">
-    <label>"Todolost App".</label>
+    <label>"Todolist App".</label>
   </div>
   <div id="app" class="flex w-full h-full">
     <div id="login" class="bg-white p-5 rounded-lg">

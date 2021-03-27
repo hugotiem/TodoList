@@ -3,12 +3,12 @@
   <label :for="todo.name" v-if="!isModifying">{{todo.name}}</label>
   <input type="text" name="modify" v-model="newName" v-on:keyup="eventHandler" v-else class="newTodo">
   <div v-if="!isModifying" class="btns">
-    <div @click="toModify()" class="rounded-lg cursor-pointer p-2 text-opacity-30 opacity-30 hover:opacity-100">
+    <div @click="toModify()" class="rounded-lg cursor-pointer p-2 fill-current text-gray-300 hover:text-black">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="15">
         <path d="M12.3 3.7l4 4L4 20H0v-4L12.3 3.7zm1.4-1.4L16 0l4 4-2.3 2.3-4-4z"/>
       </svg>
     </div>
-    <div class="rounded-lg cursor-pointer p-2 text-opacity-30 opacity-30 hover:opacity-100" @click="deleteTodo(todo.id)">
+    <div class="rounded-lg cursor-pointer p-2 stroke-current text-gray-300 hover:text-black" @click="deleteTodo(todo.id)">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="15">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
       </svg>

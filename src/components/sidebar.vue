@@ -1,7 +1,10 @@
 <template>
   
   <ul id="list">
-    <label for="">TodoLists</label>
+    <label>TodoLists</label>
+    <div>
+      <p class="text-gray-300 text-sm">Connecté en tant que {{ getUser.name }} </p>
+    </div>
     <li class="active:bg-gray-200" :id="`todolist_${todolist.id}`" v-for="todolist in getTodolists" :key="todolist.id" @click="displayTodos(todolist)">
       <label>{{todolist.name}} </label>
       <div class="rounded-lg cursor-pointer p-2 text-opacity-30 opacity-30 hover:opacity-100" @click="this.deleteTodolist(todolist.id)">
@@ -64,9 +67,11 @@ export default {
 
     //recupere actions from store/todolist/actions.js
     ...mapActions("todolist", ["fetchTodolist", "fetchTodos", "createTodolist", "deleteTodolist"]),
+    ...mapActions('account', ['userData']),
   },
 
   async mounted() {
+    await this.userData();
     const result = await this.fetchTodolist();
     if(result != '') {
       alert(result);
@@ -76,6 +81,7 @@ export default {
   computed: {
     //recupere getters from store/todolist/getters.js
     ...mapGetters("todolist", ["getTodolists", "getCurrent"]),
+    ...mapGetters('account', ['getUser']),
   },
 }
 

@@ -43,6 +43,19 @@ export async function register({commit}, id) {
   return msg;
 }
 
+export async function userData ({commit}) {
+  let msg = '';
+
+  try {
+    let response = await axios.get("user");
+    commit('setUser', response.data);
+  } catch (err) {
+    msg = 'Erreur : Impossible de récuperer les informations de l\'utilisateur (status : '+ err.response.data +').';
+  }
+
+  return msg;
+}
+
 // remove token du localstorage et redirige vers login
 export function logout({commit}) {
   localStorage.removeItem('token');
