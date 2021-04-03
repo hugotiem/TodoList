@@ -1,6 +1,7 @@
 # ToDoListApp
 
 1. [Presentation](#presentation)
+2. [Project architecture](#project-architecture)
 3. [Authors](#authors)
 4. [How to use](#how-to-use)
 5. [Bonus features](#bonus-features)
@@ -9,6 +10,31 @@
 ## Presentation 
 
 >This is a ToDo list application in vue.js for our mobile application classes.
+
+## Project architecture
+
+<pre><code>
+TodolistApp/
+├── public/	
+├── src/
+│    ├── api/
+│    │	  └── index.js
+│    ├── assets/
+│    ├── components/	
+│    ├── router/
+│    │     └── index.js
+│    ├── store/
+│    │     ├── account/
+│    │     ├── todolist/
+│    │     └── index.js
+│    ├── view/	
+│    │	   ├── login.vue
+│    │     └── Home.vue
+│    ├── App.vue
+│    └── main.js		   	
+├── README.md		          
+└── Licence  
+</pre></code>
 
 ## Authors
 
